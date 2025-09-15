@@ -7,7 +7,6 @@
 ```bash
 git clone https://github.com/Fronik123/train-schedule.git
 cd train-schedule
-npm install
 ```
 
 # Frontend
