@@ -1,0 +1,66 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+// generator client {
+//   provider = "prisma-client-js"
+//   output   = "../generated/prisma"
+// }
+
+
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String @id @default(cuid())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  email    String @unique
+  password String
+
+  name     String
+  phone    String @default("")
+  role     String @default("user")
+
+  savedSchedules SavedSchedule[]
+  @@map("user")
+}
+
+
+model Schedule {
+  id          String   @id @default(uuid())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  trainNumber String   
+  trainType   String
+  departure   String   
+  arrival     String   
+  departureAt DateTime
+  arrivalAt   DateTime
+
+  price Int
+
+  savedBy     SavedSchedule[]
+  @@map("schedule")
+}
+
+
+model SavedSchedule {
+  id         String   @id @default(uuid())
+  userId     String
+  scheduleId String
+
+  user     User     @relation(fields: [userId], references: [id])
+  schedule Schedule @relation(fields: [scheduleId], references: [id], onDelete: Cascade)
+}

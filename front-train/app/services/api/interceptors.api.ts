@@ -1,0 +1,48 @@
+import { deleteTokensStorage, getAccessToken } from "../auth/auth.helper";
+import { API_URL } from "@/config/api.config";
+import { getNewTokens } from "./helper.auth";
+import { errorCatch } from "./error.api";
+import axios from "axios";
+
+const instance = axios.create({
+  baseURL: API_URL,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
+instance.interceptors.request.use(async (config) => {
+  const accesToken = await getAccessToken();
+
+  if (config.headers && accesToken)
+    config.headers.Authorization = `Bearer ${accesToken}`;
+
+  return config;
+});
+
+instance.interceptors.request.use(
+  (config) => config,
+  async (error) => {
+    const originalRequest = error.config;
+
+    if (
+      (error.response.status === 401 ||
+        errorCatch(error) === "jwt expired" ||
+        errorCatch(error) === "jwt must be provided") &&
+      error.config &&
+      !error.config._isRetry
+    ) {
+      originalRequest._isRetry = true;
+      try {
+        await getNewTokens();
+        return instance.request(originalRequest);
+      } catch (error) {
+        if (errorCatch(error) === "jwt expored") await deleteTokensStorage();
+      }
+
+      throw error;
+    }
+  },
+);
+
+export default instance;
