@@ -37,12 +37,13 @@ npm install
 DATABASE_URL="postgresql://USERNAME:PASSWORD@localhost:5432/DATABASE_NAME?schema=public"
 
 ### 4. In .env add JWT_secret
-JWT_SECRET=test
+JWT_SECRET=your_jwt_secret
 
-### 5. Prisma migrate
+### 5. Prisma db push
 
 ```bash
-npx prisma migrate dev
+npx prisma db push
+npx prisma generate
 ```
 
 ### 6. Run start
