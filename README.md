@@ -6,7 +6,7 @@
 ### 1. git clone
 ```bash
 git clone https://github.com/Fronik123/train-schedule.git
-cd frontend-company
+cd train-schedule
 npm install
 ```
 
