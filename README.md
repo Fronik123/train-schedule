@@ -1,4 +1,4 @@
-# React Native Expo + TypeScript + Nest + JWt
+# React Native Expo + TypeScript + Nest 
 
 
 ### Libraries
