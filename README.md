@@ -2,7 +2,7 @@
 
 
 ### Libraries
-+ **UseForm** + **react-query** + **async-storage** + **react-router-dom** + **JWT** + **uuid** + **JWT Passport** + **prettier** + **axios**
++ **UseForm** + **react-query** + **async-storage** + **react-router-dom** + **JWT** + **uuid** + **JWT Passport** + **prettier** + **axios** + **swagger**
 ### 1. git clone
 ```bash
 git clone https://github.com/Fronik123/train-schedule.git
