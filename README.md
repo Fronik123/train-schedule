@@ -16,7 +16,11 @@ cd front-train
 npm install
 ```
 
-### 2. Run start
+### 2. Go to root folder .env and and add url
+
+SERVER_URL=http://localhost:3000
+
+### 3. Run start
 ```bash
 npm run ios
 ```
