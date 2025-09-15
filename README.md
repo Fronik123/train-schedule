@@ -17,8 +17,9 @@ npm install
 ```
 
 ### 2. Go to root folder .env and and add url
-
+```bash
 SERVER_URL=http://localhost:3000
+```
 
 ### 3. Run start
 ```bash
@@ -34,10 +35,14 @@ npm install
 
 ### 3. Add file to root folder .env and and path to database
 
+```bash
 DATABASE_URL="postgresql://USERNAME:PASSWORD@localhost:5432/DATABASE_NAME?schema=public"
+```
 
 ### 4. In .env add JWT_secret
+```bash
 JWT_SECRET=your_jwt_secret
+```
 
 ### 5. Prisma db push
 
