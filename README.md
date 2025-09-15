@@ -1,8 +1,8 @@
-# React Native Expo + TypeScript + Nest 
+# React Native Expo + TypeScript + Nest + Tailwindcss(nativewind)
 
 
 ### Libraries
-+ **UseForm** + **react-router-dom** + **JWt** + **uuid**
++ **UseForm** + **react-query** + **async-storage** + **react-router-dom** + **JWT** + **uuid** + **JWT Passport** + **prettier** + **axios**
 ### 1. git clone
 ```bash
 git clone https://github.com/Fronik123/train-schedule.git
